@@ -1,16 +1,16 @@
 /*
  * Copyright 1993-2010 NVIDIA Corporation.  All rights reserved.
  *
- * NVIDIA Corporation and its licensors retain all intellectual property and 
- * proprietary rights in and to this software and related documentation. 
- * Any use, reproduction, disclosure, or distribution of this software 
+ * NVIDIA Corporation and its licensors retain all intellectual property and
+ * proprietary rights in and to this software and related documentation.
+ * Any use, reproduction, disclosure, or distribution of this software
  * and related documentation without an express license agreement from
  * NVIDIA Corporation is strictly prohibited.
  *
- * Please refer to the applicable NVIDIA end user license agreement (EULA) 
- * associated with this source code for terms and conditions that govern 
+ * Please refer to the applicable NVIDIA end user license agreement (EULA)
+ * associated with this source code for terms and conditions that govern
  * your use of this NVIDIA software.
- * 
+ *
  */
 #include <stdio.h>
 #include <omp.h>
@@ -27,11 +27,13 @@ void add( int *a, int *b, int *c ) {
 
 int main( void ) {
    int *a=new int[N], *b = new int[N], *c = new int[N];
-   cudaEvent_t inicio, fin;
-   float tiempo;
-
+   cudaEvent_t inicio, fin, st2, fn2;
+   float tiempo, tt2;
+   cudaEventCreate( &st2 );
+   cudaEventCreate( &fn2 );
+   cudaEventRecord( st2, 0 );
    // fill the arrays 'a' and 'b' on the CPU
-   #pragma parallel for 
+   #pragma parallel for
    for (int i=0; i<N; i++)
       a[i] = b[i] = i+1;
 
@@ -50,8 +52,10 @@ int main( void ) {
    free(a);
    free(b);
    free(c);
-
-   printf("tiempo total en ms: %f\n", tiempo);
+   cudaEventRecord( fn2, 0 );
+   cudaEventSynchronize( fn2 );
+   cudaEventElapsedTime( &tt2, st2, fn2 );
+   printf("tiempo total en ms: %f\t tiempo de ejecucion%f\n", tiempo,tt2);
 
    return 0;
 }
