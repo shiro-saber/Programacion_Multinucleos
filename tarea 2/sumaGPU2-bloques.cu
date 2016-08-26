@@ -41,7 +41,7 @@ int main( void ) {
    cudaEventRecord( inicio1, 0 ); // Se toma el tiempo de inicio
 
    d = M / N;
-   printf( "d:%d\n", d );
+   //printf( "d:%d\n", d );
 
    // allocate the memory on the GPU
    cudaMalloc( (void**)&dev_a, M * sizeof(int) );
@@ -76,14 +76,14 @@ int main( void ) {
    cudaEventElapsedTime( &tiempo1, inicio1, fin1 );
 
    // display the results
-   for (int i=0; i<M; i++)
-       printf( "%d + %d = %d\n", a[i], b[i], c[i] );
+   //for (int i=0; i<M; i++)
+   //    printf( "%d + %d = %d\n", a[i], b[i], c[i] );
 
    free(a);
    free(b);
    free(c);
 
-   printf("Tiempo cálculo %f ms\n", tiempo2);
+   printf("Tiempo cálculo %f ms\t", tiempo2);
    printf("Tiempo total %f ms\n", tiempo1);
 
    return 0;

@@ -43,7 +43,7 @@ int main( void ) {
    add( a, b, c );
    cudaEventRecord( fin, 0 );
    cudaEventSynchronize( fin );
-   cudaEventElapsedTime( &tiempo, st2, fn2 );
+   cudaEventElapsedTime( &tiempo, inicio, fin );
 
    // display the results
    //for (int i=0; i<N; i++)
@@ -54,8 +54,8 @@ int main( void ) {
    free(c);
    cudaEventRecord( fn2, 0 );
    cudaEventSynchronize( fn2 );
-   cudaEventElapsedTime( &tt2, inicio, fin );
-   printf("tiempo total en ms: %f\t tiempo de ejecucion%f\n", tiempo,tt2);
+   cudaEventElapsedTime( &tt2, st2, fn2 );
+   printf("tiempo calculos en ms: %f\t tiempo de total %f\n", tiempo,tt2);
 
    return 0;
 }

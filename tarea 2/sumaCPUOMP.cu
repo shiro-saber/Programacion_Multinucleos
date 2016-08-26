@@ -18,11 +18,18 @@
 #define N   1000000
 
 void add( int *a, int *b, int *c ) {
-   int tid = 0;    // this is CPU zero, so we start at zero
+   //int tid = 0;    // this is CPU zero, so we start at zero
+   /*
    while (tid < N) {
       c[tid] = a[tid] + b[tid];
       tid ++;   // we have one CPU, so we increment by one
-   }
+   }*/
+      #pragma omp parallel for
+      for (int i = 0; i < N; ++i)
+      {
+         c[i] = a[i] + b[i];
+      }
+
 }
 
 int main( void ) {
@@ -33,7 +40,7 @@ int main( void ) {
    cudaEventCreate( &fn2 );
    cudaEventRecord( st2, 0 );
    // fill the arrays 'a' and 'b' on the CPU
-   #pragma parallel for
+   #pragma omp parallel for
    for (int i=0; i<N; i++)
       a[i] = b[i] = i+1;
 
@@ -46,16 +53,16 @@ int main( void ) {
    cudaEventElapsedTime( &tiempo, inicio, fin );
 
    // display the results
-   //for (int i=0; i<N; i++)
-   //   printf( "%d + %d = %d\n", a[i], b[i], c[i] );
-
+   /*for (int i=0; i<N; i++)
+      printf( "%d + %d = %d\n", a[i], b[i], c[i] );
+*/
    free(a);
    free(b);
    free(c);
    cudaEventRecord( fn2, 0 );
    cudaEventSynchronize( fn2 );
    cudaEventElapsedTime( &tt2, st2, fn2 );
-   printf("tiempo total en ms: %f\t tiempo de ejecucion%f\n", tiempo,tt2);
+   printf("tiempo calculos en ms: %f\t tiempo de total %f\n", tiempo,tt2);
 
    return 0;
 }
