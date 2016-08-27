@@ -1,0 +1,105 @@
+puro CPU
+tiempo calculos en ms: 2.049408	 tiempo de total 7.047008
+tiempo calculos en ms: 4.636736	 tiempo de total 8.887296
+tiempo calculos en ms: 5.492320	 tiempo de total 12.328384
+tiempo calculos en ms: 0.032000	 tiempo de total 8.584352
+tiempo calculos en ms: 3.743360	 tiempo de total 10.158336
+tiempo calculos en ms: 2.878656	 tiempo de total 9.747680
+tiempo calculos en ms: 2.297792	 tiempo de total 6.816512
+tiempo calculos en ms: 3.255904	 tiempo de total 7.565024
+tiempo calculos en ms: 0.006976	 tiempo de total 6.742208
+tiempo calculos en ms: 3.952480	 tiempo de total 8.828768
+tiempo calculos en ms: 0.001472	 tiempo de total 8.575520
+tiempo calculos en ms: 2.947168	 tiempo de total 9.180896
+tiempo calculos en ms: 4.048128	 tiempo de total 9.428704
+tiempo calculos en ms: 3.048992	 tiempo de total 6.720256
+tiempo calculos en ms: 4.712768	 tiempo de total 8.518240
+tiempo calculos en ms: 2.665376	 tiempo de total 8.183840
+tiempo calculos en ms: 3.456768	 tiempo de total 8.043296
+tiempo calculos en ms: 2.674656	 tiempo de total 9.795456
+tiempo calculos en ms: 4.925536	 tiempo de total 8.758080
+tiempo calculos en ms: 4.780800	 tiempo de total 10.555072
+CPU y OMP
+tiempo calculos en ms: 5.074912	 tiempo de total 17.370655
+tiempo calculos en ms: 1.928384	 tiempo de total 14.578688
+tiempo calculos en ms: 4.451680	 tiempo de total 9.805280
+tiempo calculos en ms: 5.837536	 tiempo de total 10.996576
+tiempo calculos en ms: 4.136128	 tiempo de total 11.753312
+tiempo calculos en ms: 2.701760	 tiempo de total 10.834336
+tiempo calculos en ms: 5.444064	 tiempo de total 13.373792
+tiempo calculos en ms: 5.901024	 tiempo de total 10.973728
+tiempo calculos en ms: 2.241600	 tiempo de total 8.774880
+tiempo calculos en ms: 1.970240	 tiempo de total 9.889760
+tiempo calculos en ms: 4.336096	 tiempo de total 9.844800
+tiempo calculos en ms: 2.244704	 tiempo de total 9.136288
+tiempo calculos en ms: 1.261088	 tiempo de total 9.065024
+tiempo calculos en ms: 5.642848	 tiempo de total 11.026752
+tiempo calculos en ms: 3.212608	 tiempo de total 8.567328
+tiempo calculos en ms: 6.619616	 tiempo de total 11.957952
+tiempo calculos en ms: 4.911488	 tiempo de total 10.531520
+tiempo calculos en ms: 5.636000	 tiempo de total 12.321888
+tiempo calculos en ms: 5.603968	 tiempo de total 11.035168
+tiempo calculos en ms: 3.746912	 tiempo de total 11.023552
+solo bloques
+Tiempo cálculo 9.701184 ms	Tiempo total 15.296608 ms
+Tiempo cálculo 9.765472 ms	Tiempo total 13.012096 ms
+Tiempo cálculo 9.759488 ms	Tiempo total 13.003104 ms
+Tiempo cálculo 9.721280 ms	Tiempo total 12.940032 ms
+Tiempo cálculo 9.663968 ms	Tiempo total 12.838144 ms
+Tiempo cálculo 9.671776 ms	Tiempo total 15.051680 ms
+Tiempo cálculo 9.708960 ms	Tiempo total 12.975648 ms
+Tiempo cálculo 9.707552 ms	Tiempo total 12.872640 ms
+Tiempo cálculo 9.740864 ms	Tiempo total 17.143007 ms
+Tiempo cálculo 9.678720 ms	Tiempo total 12.861408 ms
+Tiempo cálculo 9.680160 ms	Tiempo total 12.925856 ms
+Tiempo cálculo 9.732800 ms	Tiempo total 15.967200 ms
+Tiempo cálculo 9.709056 ms	Tiempo total 15.817440 ms
+Tiempo cálculo 9.728032 ms	Tiempo total 12.940640 ms
+Tiempo cálculo 9.716960 ms	Tiempo total 15.226336 ms
+Tiempo cálculo 9.740608 ms	Tiempo total 17.323521 ms
+Tiempo cálculo 9.785824 ms	Tiempo total 15.842400 ms
+Tiempo cálculo 9.706048 ms	Tiempo total 15.733568 ms
+Tiempo cálculo 9.685472 ms	Tiempo total 12.928512 ms
+Tiempo cálculo 9.699584 ms	Tiempo total 15.623872 ms
+solo threads
+Tiempo cálculo 0.007520 ms	Tiempo total 5.765184 ms
+Tiempo cálculo 0.007680 ms	Tiempo total 3.257792 ms
+Tiempo cálculo 0.007680 ms	Tiempo total 3.243488 ms
+Tiempo cálculo 0.007520 ms	Tiempo total 3.170368 ms
+Tiempo cálculo 0.007488 ms	Tiempo total 3.214048 ms
+Tiempo cálculo 0.007456 ms	Tiempo total 3.251712 ms
+Tiempo cálculo 0.007552 ms	Tiempo total 5.791328 ms
+Tiempo cálculo 0.007552 ms	Tiempo total 3.273024 ms
+Tiempo cálculo 0.007520 ms	Tiempo total 5.683872 ms
+Tiempo cálculo 0.007520 ms	Tiempo total 5.276256 ms
+Tiempo cálculo 0.007520 ms	Tiempo total 5.773184 ms
+Tiempo cálculo 0.007456 ms	Tiempo total 3.494176 ms
+Tiempo cálculo 0.007488 ms	Tiempo total 3.249024 ms
+Tiempo cálculo 0.007552 ms	Tiempo total 5.816832 ms
+Tiempo cálculo 0.007808 ms	Tiempo total 3.391008 ms
+Tiempo cálculo 0.007456 ms	Tiempo total 3.272928 ms
+Tiempo cálculo 0.007488 ms	Tiempo total 3.183936 ms
+Tiempo cálculo 0.007488 ms	Tiempo total 5.063744 ms
+Tiempo cálculo 0.007488 ms	Tiempo total 3.276640 ms
+Tiempo cálculo 0.007680 ms	Tiempo total 5.892512 ms
+bloques y threads
+Tiempo cálculo 0.097440 ms	Tiempo total 3.565536 ms
+Tiempo cálculo 0.101696 ms	Tiempo total 3.245632 ms
+Tiempo cálculo 0.104768 ms	Tiempo total 3.388672 ms
+Tiempo cálculo 0.099584 ms	Tiempo total 5.468608 ms
+Tiempo cálculo 0.104192 ms	Tiempo total 3.372416 ms
+Tiempo cálculo 0.096736 ms	Tiempo total 5.896384 ms
+Tiempo cálculo 0.097376 ms	Tiempo total 7.420128 ms
+Tiempo cálculo 0.105344 ms	Tiempo total 6.365504 ms
+Tiempo cálculo 0.096992 ms	Tiempo total 3.266912 ms
+Tiempo cálculo 0.097824 ms	Tiempo total 8.408800 ms
+Tiempo cálculo 0.104992 ms	Tiempo total 8.140768 ms
+Tiempo cálculo 0.101984 ms	Tiempo total 6.410112 ms
+Tiempo cálculo 0.096992 ms	Tiempo total 3.251968 ms
+Tiempo cálculo 0.097056 ms	Tiempo total 5.758848 ms
+Tiempo cálculo 0.105312 ms	Tiempo total 3.311904 ms
+Tiempo cálculo 0.104384 ms	Tiempo total 3.379072 ms
+Tiempo cálculo 0.096448 ms	Tiempo total 3.277504 ms
+Tiempo cálculo 0.104960 ms	Tiempo total 6.084224 ms
+Tiempo cálculo 0.103680 ms	Tiempo total 3.325856 ms
+Tiempo cálculo 0.102048 ms	Tiempo total 5.235488 ms

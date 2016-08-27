@@ -3,36 +3,41 @@ make
 
 echo ""
 echo "puro CPU"
+echo "puro CPU" >>  rpo.txt
 for run in {1..20}; do
-	./sCPU
+	./sCPU >> rpo.txt
 done
 echo ""
 echo ""
 echo ""
 echo "CPU y OMP"
+echo "CPU y OMP" >> rpo.txt
 for run in {1..20}; do
-	./sCPUOMP
+	./sCPUOMP >> rpo.txt
 done
 echo ""
 echo ""
 echo ""
 echo "solo bloques"
+echo "solo bloques" >> rpo.txt
 for run in {1..20}; do
-	./sGB
+	./sGB >> rpo.txt
 done
 echo ""
 echo ""
 echo ""
+echo "solo threads" >> rpo.txt
 echo "solo threads"
 for run in {1..20}; do
-	./sGT
+	./sGT >> rpo.txt
 done
 echo ""
 echo ""
 echo ""
+echo "bloques y threads" >> rpo.txt
 echo "bloques y threads"
 for run in {1..20}; do
-	./sGBT
+	./sGBT >> rpo.txt
 done
 
 make clean 
