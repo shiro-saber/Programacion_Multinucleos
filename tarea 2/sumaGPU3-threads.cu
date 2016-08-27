@@ -76,8 +76,7 @@ int main()
    free(b);
    free(c);
 
-   printf("Tiempo cálculo %f ms\t", tiempo2);
-   printf("Tiempo total %f ms\n", tiempo1);
+   printf("tiempo calculos en ms: %Lf\t tiempo de total %Lf\n", tiempo2,tiempo1);
 	
    return 0;
 } /* end main */

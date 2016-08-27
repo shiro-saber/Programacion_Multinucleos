@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <omp.h>
 
-#define N   1000000
+#define N   750000000
 
 void add( int *a, int *b, int *c ) {
    //int tid = 0;    // this is CPU zero, so we start at zero

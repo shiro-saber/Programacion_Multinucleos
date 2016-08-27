@@ -17,7 +17,7 @@
 #include <stdio.h>
 
 #define N   1000
-#define M   1000000
+#define M   250000000
 int d;
 
 __global__ void add( int *a, int *b, int *c, int i ) {
@@ -83,8 +83,6 @@ int main( void ) {
    free(b);
    free(c);
 
-   printf("Tiempo cálculo %f ms\t", tiempo2);
-   printf("Tiempo total %f ms\n", tiempo1);
-
+   printf("tiempo calculos en ms: %f\t tiempo de total %f\n", tiempo2,tiempo1);
    return 0;
 }
