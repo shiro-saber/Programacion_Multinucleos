@@ -17,7 +17,7 @@
 #include <stdio.h>
 
 #define N   1000
-#define M   250000000
+#define M   1000000
 int d;
 
 __global__ void add( int *a, int *b, int *c, int i ) {
