@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /* experiment with N */
-/* how large can it be? */
+/* how large can it be? 536870911 cm */
 #define N 1000000
 #define THREADS_PER_BLOCK 1000
 
@@ -10,7 +10,7 @@ __global__ void add(int *a, int *b, int *c)
    int index = blockIdx.x * blockDim.x + threadIdx.x;
    if (index < N)
       c[index] = a[index] + b[index];
-}
+}//funcion de kernel cuda
 
 int main()
 {
@@ -41,7 +41,7 @@ int main()
 
    /* copy inputs to deice */
    /* fix the parameters needed to copy data to the device */
-   cudaMemcpy( d_a, a, size, cudaMemcpyHostToDevice );
+   cudaMemcpy( d_a, a, size, cudaMemcpyHostToDevice );// pasamos los datos a las GPU
    cudaMemcpy( d_b, b, size, cudaMemcpyHostToDevice );
 
    cudaEventCreate(&inicio2); // Se inicializan
@@ -57,11 +57,11 @@ int main()
 
    /* copy result back to host */
    /* fix the parameters needed to copy data back to the host */
-   cudaMemcpy( c, d_c, size, cudaMemcpyDeviceToHost );
+   cudaMemcpy( c, d_c, size, cudaMemcpyDeviceToHost );//traduccion: regresamos los datos a ram
 
    cudaFree( d_a );
    cudaFree( d_b );
-   cudaFree( d_c );
+   cudaFree( d_c );//limpiamos la memoria de cuda
 
    cudaEventRecord( fin1, 0); // Se toma el tiempo final.
    cudaEventSynchronize( fin1 ); // Se sincroniza

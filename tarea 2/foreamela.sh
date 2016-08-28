@@ -1,6 +1,6 @@
 #!/bin/bash
 make
-
+#script para sacar el tiempo de ejecucion de lso propgramas y escribirlos en un archivo
 echo ""
 echo "puro CPU"
 echo "puro CPU" >>  rpo.txt
@@ -41,3 +41,4 @@ for run in {1..20}; do
 done
 
 make clean 
+#posteriormente sacamos los datos del archivo e hicimos los calculos 

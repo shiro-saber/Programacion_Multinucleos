@@ -21,3 +21,4 @@ sGT: sumaGPU3-threads.cu
 
 sGBT: sumaGPU3-bloques-threads.cu
 	nvcc sumaGPU3-bloques-threads.cu -g -o sGBT
+#como nos dio flojera estar recompilando este make file compila todo junto 
