@@ -29,7 +29,7 @@ void print_matrix(float **mat, int kuz)
 
 int main(int argc, char *argv[])
 {
-  if (argc != 2)
+  if (argc != 3)
   {
     fprintf(stderr, "The right use it's %s <number of the N*N matrix> <0 if you want prints or 1 if you don't>\n", argv[0]);
     exit(-1);
@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
     printf("\n\n\n");
     print_matrix(res,N);
   }
-  
+
   //liberamesta
   free(mat);
   free(mat2);
