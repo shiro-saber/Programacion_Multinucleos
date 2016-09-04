@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 {
   if (argc != 2)
   {
-    fprintf(stderr, "The right use it's %s <number of the N*N matrix>\n", argv[0]);
+    fprintf(stderr, "The right use it's %s <number of the N*N matrix> <0 if you want prints or 1 if you don't>\n", argv[0]);
     exit(-1);
   }
 
@@ -62,9 +62,12 @@ int main(int argc, char *argv[])
   mat2 = rand_matrix(mat2, N);
 
   //imprime las matrices
-  print_matrix(mat, N);
-  printf("\n\n\n");
-  print_matrix(mat2, N);
+  if(atoi(argv[2]) == 0)
+  {
+    print_matrix(mat, N);
+    printf("\n\n\n");
+    print_matrix(mat2, N);
+  }
 
   //crono de los calculos
   cudaEventCreate( &inicio );
@@ -81,9 +84,12 @@ int main(int argc, char *argv[])
   cudaEventElapsedTime( &tiempo, inicio, fin );
 
   //imprimimos el resultado
-  printf("\n\n\n");
-  print_matrix(res,N);
-
+  if(atoi(argv[1]) == 0)
+  {
+    printf("\n\n\n");
+    print_matrix(res,N);
+  }
+  
   //liberamesta
   free(mat);
   free(mat2);
