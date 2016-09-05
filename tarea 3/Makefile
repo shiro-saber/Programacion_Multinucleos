@@ -10,8 +10,8 @@ clean:
 mCPU: multMat.cu
 	nvcc $(CFLAGS) multMat.cu -g -o mCPU
 
-mCPUOMP: .cu
-	nvcc $(CFLAGS) .cu -g -o mCPUOMP
+mCPUOMP: multOMP.cu
+	nvcc $(CFLAGS) multOMP.cu -g -o mCPUOMP
 
 mGB: .cu
 	nvcc .cu -g -o mGB
