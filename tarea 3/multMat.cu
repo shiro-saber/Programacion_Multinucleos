@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
   cudaEventElapsedTime( &tiempo, inicio, fin );
 
   //imprimimos el resultado
-  if(atoi(argv[1]) == 0)
+  if(atoi(argv[2]) == 0)
   {
     printf("\n\n\n");
     print_matrix(res,N);
