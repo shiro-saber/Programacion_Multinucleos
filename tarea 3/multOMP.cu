@@ -10,7 +10,7 @@ float** rand_matrix(float **mat, int kuz)
 
   for(i = 0; i < kuz; i++)
     for(j = 0; j < kuz; j++)
-      mat[i][j] = (rand()%10);
+      mat[i][j] = (rand()%1000+1);
 
     return backup;
 }
