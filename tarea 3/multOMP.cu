@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
     for(i=0; i<N; ++i)
       for(j=0; j<N; ++j)
         for(k=0; k<N; ++k)
-          vres[i][j]+=mat[i][k]*mat2[k][j];
+          res[i][j]+=mat[i][k]*mat2[k][j];
 
   //paramos el crono de los calculos
   cudaEventRecord( fin, 0 );
