@@ -74,12 +74,14 @@ int main(int argc, char *argv[])
   cudaEventCreate( &fin );
   cudaEventRecord( inicio, 0 );
   //hacemos la multiplicacion
+
   omp_set_num_threads(4);
   #pragma omp parallel for private(k)
     for(i=0; i<N; ++i)
       for(j=0; j<N; ++j)
         for(k=0; k<N; ++k)
-          res[i][j]+=mat[i][k]*mat2[k][j];
+          vres[i][j]+=mat[i][k]*mat2[k][j];
+
   //paramos el crono de los calculos
   cudaEventRecord( fin, 0 );
   cudaEventSynchronize( fin );
