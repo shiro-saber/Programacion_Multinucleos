@@ -73,14 +73,9 @@ int main(int argc, char *argv[])
   cudaEventCreate( &inicio );
   cudaEventCreate( &fin );
   cudaEventRecord( inicio, 0 );
-  //hacemos la multiplicacion
-<<<<<<< HEAD
 
-  omp_set_num_threads(4);
+  //hacemos la multiplicacion
   #pragma omp parallel for private(k)
-=======
-  #pragma omp parallel for private(j,k)
->>>>>>> 961b9140958aafc98be484bb6d58e3a44730b2df
     for(i=0; i<N; ++i)
       for(j=0; j<N; ++j)
         for(k=0; k<N; ++k)
