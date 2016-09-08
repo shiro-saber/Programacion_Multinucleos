@@ -10,7 +10,7 @@ float** rand_matrix(float **mat, int kuz)
 
   for(i = 0; i < kuz; i++)
     for(j = 0; j < kuz; j++)
-      mat[i][j] = (rand()%10);
+      mat[i][j] = (rand()%1000+1);
 
     return backup;
 }
@@ -74,9 +74,13 @@ int main(int argc, char *argv[])
   cudaEventCreate( &fin );
   cudaEventRecord( inicio, 0 );
   //hacemos la multiplicacion
+<<<<<<< HEAD
 
   omp_set_num_threads(4);
   #pragma omp parallel for private(k)
+=======
+  #pragma omp parallel for private(j,k)
+>>>>>>> 961b9140958aafc98be484bb6d58e3a44730b2df
     for(i=0; i<N; ++i)
       for(j=0; j<N; ++j)
         for(k=0; k<N; ++k)
@@ -88,7 +92,7 @@ int main(int argc, char *argv[])
   cudaEventElapsedTime( &tiempo, inicio, fin );
 
   //imprimimos el resultado
-  if(atoi(argv[1]) == 0)
+  if(atoi(argv[2]) == 0)
   {
     printf("\n\n\n");
     print_matrix(res,N);

@@ -13,12 +13,12 @@ mCPU: multMat.cu
 mCPUOMP: multOMP.cu
 	nvcc $(CFLAGS) multOMP.cu -g -o mCPUOMP
 
-mGB: .cu
-	nvcc .cu -g -o mGB
+mGB: multGPUBT.cu multGPUBT.h
+	nvcc multGPUBT.cu -g -o mGPUBT
 
 mGT: .cu
-	nvcc .cu -g -o mGT
+	nvcc .cu -g -o mGPUT
 
 mGBT: .cu
-	nvcc .cu -g -o mGBT
+	nvcc .cu -g -o mGPUB
 #como nos dio flojera estar recompilando este make file compila todo junto
