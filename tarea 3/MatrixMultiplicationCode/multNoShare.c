@@ -1,12 +1,3 @@
-/*
- * multNoShare.c
- *
- * Robert Hochberg
- * January 24, 2012
- *
- * Based nearly entirely on the code from the CUDA C Programming Guide
- */
-
 #include "multNoShare.h"
 
 // Matrix multiplication - Host code 
@@ -116,6 +107,8 @@ int main(int argc, char* argv[]){
       for(int j = 0; j < B.width; j++)
         B.elements[i*B.width + j] = (float)((rand() % 1001)+10);
 
+      //lebnado de las matrices con numeros random 
+
   cudaEventCreate(&inicio2); // Se inicializan
   cudaEventCreate(&fin2);
   cudaEventRecord( inicio2, 0 );
@@ -130,7 +123,7 @@ int main(int argc, char* argv[]){
   cudaEventSynchronize( fin1 ); // Se sincroniza
   cudaEventElapsedTime( &tiempo1, inicio1, fin1 );
 
-
+  /*
   int imprimemela =0;
   printf("1- imprimemela matriz\n0- no ver nada\n");
   scanf("%d", &imprimemela);
@@ -157,7 +150,8 @@ int main(int argc, char* argv[]){
     }
     printf("\n");
   }
+  */
 
-  printf("tiempo calculos en ms: %f\t tiempo de total %f\n", tiempo2,tiempo1);
+  printf("tiempo calculos en ms: %f\t tiempo de total %f\n", tiempo2,tiempo1); //imprimir tiempos 
   
 }

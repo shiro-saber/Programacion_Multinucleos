@@ -35,7 +35,7 @@ void MatMul(const Matrix A, const Matrix B, Matrix C) {
   dim3 dimBlock(BLOCK_SIZE, BLOCK_SIZE); 
   dim3 dimGrid((B.width + dimBlock.x - 1) / dimBlock.x, 
     (A.height + dimBlock.y - 1) / dimBlock.y); 
-  MatMulKernel<<<dimGrid, dimBlock>>>(d_A, d_B, d_C); 
+  MatMulKernel<<<dimGrid, 1>>>(d_A, d_B, d_C); 
   err = cudaThreadSynchronize();
 //  printf("Run kernel: %s\n", cudaGetErrorString(err));
   

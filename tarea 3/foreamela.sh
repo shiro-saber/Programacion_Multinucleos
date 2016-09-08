@@ -56,4 +56,6 @@ for run in {1..20}; do
 done
 
 make clean
+
+echo "Si se eligio la impresión, se podrá visualizar en el archivo rpo.txt"
 #posteriormente sacamos los datos del archivo e hicimos los calculos
