@@ -16,9 +16,9 @@ mCPUOMP: multOMP.cu
 mGPUBT: multGPUBT.cu multGPUBT.h
 	nvcc multGPUBT.cu -g -o mGPUBT
 
-mGPUT: .cu
-	nvcc .cu -g -o mGPUT
+mGPUT: multGPUT.cu multGPUBT.h
+	nvcc multGPUT.cu -g -o mGPUT
 
-mGPUB: .cu
-	nvcc .cu -g -o mGPUB
+mGPUB: multGPUB.cu multGPUBT.h
+	nvcc multGPUB.cu -g -o mGPUB
 #como nos dio flojera estar recompilando este make file compila todo junto
