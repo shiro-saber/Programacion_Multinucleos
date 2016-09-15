@@ -109,14 +109,10 @@ void multiplicarMatrices( int *a, int *b, int *c)
 
    //int *a, *b, *c;
 
-
-
       multiplicarGPU( a, b, c) ;
 
     //desplegar(c);
-   free( a );
-   free( b );
-   free( c );
+
 }
 
 
@@ -125,7 +121,7 @@ void multiplicarMatrices( int *a, int *b, int *c)
 void minime(int *x,int *r,int iter){
   for(int i =0; i < t1;i++){
     for(int j=0; i < t1;j++){
-      r[i+j] = x[(iter*i*j)];
+      r[i] = x[(iter*i)];
     }
   }
 }
@@ -143,9 +139,10 @@ int sumamela(int *d){
 // algo asi como el main, pero como no te gustan mains largos aki ta
 void convulcion(){
   int *a, *b, *c, *d;//d es la matriz reducida de b para "sobnreponer" con a
-  a = (int*) malloc(t1*sizeof(int));
+  a = (int*) malloc(t1*t1*sizeof(int));
   b = (int*) malloc(t2*t3*sizeof(int));
   c = (int*) malloc(t2*t3*sizeof(int));
+  d = (int*) malloc(t1*t1*sizeof(int));
 //printf("inici\n");
   int iter =1;
   inicializar( a, b, c );
@@ -157,8 +154,15 @@ void convulcion(){
 
   multiplicarMatrices(a,d,c);
   iter++;
+  if(tier%255 == 0)
+    iter++;
   b[t2+1+iter] = sumamela(d);
   }
+
+  free( a );
+  free( b );
+  free( c );
+  free(d);
 
 }
 
@@ -170,6 +174,7 @@ int main (int argc, char *argv[] )
   cudaEventCreate( &ts );
   cudaEventCreate( &tf );
   cudaEventRecord( ts, 0 );
+  printf("VIVA MEXICO!!!!!!!!\nasi de feurte el grito ??\n");
 //iniciamos timers
 //cachamos args del comando
    if ( argv[1] == NULL || argv[2]== NULL || argv[3]==NULL )
