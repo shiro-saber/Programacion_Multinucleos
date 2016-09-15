@@ -10,7 +10,7 @@ float** rand_matrix(float **mat, int kuz)
 
   for(i = 0; i < kuz; i++)
     for(j = 0; j < kuz; j++)
-      mat[i][j] = (rand()%10);
+      mat[i][j] = (rand()%1000+1);
 
     return backup;
 }
@@ -73,12 +73,14 @@ int main(int argc, char *argv[])
   cudaEventCreate( &inicio );
   cudaEventCreate( &fin );
   cudaEventRecord( inicio, 0 );
+
   //hacemos la multiplicacion
-  #pragma omp parallel for private(j,k)
+  #pragma omp parallel for private(k)
     for(i=0; i<N; ++i)
       for(j=0; j<N; ++j)
         for(k=0; k<N; ++k)
           res[i][j]+=mat[i][k]*mat2[k][j];
+
   //paramos el crono de los calculos
   cudaEventRecord( fin, 0 );
   cudaEventSynchronize( fin );

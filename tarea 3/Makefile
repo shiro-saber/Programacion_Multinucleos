@@ -1,11 +1,11 @@
-ALL: mCPU mCPUOMP mGB mGT mGBT
+ALL: mCPU mCPUOMP mGPUBT mGPUB mGPUT 
 CFLAGS=-Xcompiler -fopenmp -w
 
 .PHONY:clean
 
 clean:
 	@echo "Porque Kenny!"
-	\rm -f *.o mCPU mCPUOMP mGB mGT mGBT
+	\rm -f *.o mCPU mCPUOMP mGPUB mGPUT mGPUBT
 
 mCPU: multMat.cu
 	nvcc $(CFLAGS) multMat.cu -g -o mCPU
@@ -13,12 +13,12 @@ mCPU: multMat.cu
 mCPUOMP: multOMP.cu
 	nvcc $(CFLAGS) multOMP.cu -g -o mCPUOMP
 
-mGB: .cu
-	nvcc .cu -g -o mGB
+mGPUBT: multGPUBT.cu multGPUBT.h
+	nvcc multGPUBT.cu -g -o mGPUBT
 
-mGT: .cu
-	nvcc .cu -g -o mGT
+mGPUT: multGPUT.cu multGPUBT.h
+	nvcc multGPUT.cu -g -o mGPUT
 
-mGBT: .cu
-	nvcc .cu -g -o mGBT
+mGPUB: multGPUB.cu multGPUBT.h
+	nvcc multGPUB.cu -g -o mGPUB
 #como nos dio flojera estar recompilando este make file compila todo junto
