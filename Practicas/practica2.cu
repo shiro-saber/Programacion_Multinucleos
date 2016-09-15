@@ -11,9 +11,8 @@ __global__ void euler(int **a, int **b, int **c, int n, int m, int p)
   int i = blockIdx.x*blockDim.x + threadIdx.x;
   int j = blockIdx.y*blockDim.y + threadIdx.y;
 
-  c[i*n, j*m] = 0;
   __syncthreads();
-  c[i*n, j*m] = a[i*n+j, j*m+i];
+  c[i+j][j] = b[i+j][j] + a[i+j][j];
 }
 
 //funcion para imprimir
@@ -118,7 +117,6 @@ void inicializar(int** a, int** b, int** c_t, int n, int m, int p)
   cudaEventElapsedTime(&tiempo_t, init, end);
 
   printf("El tiempo que tarda es: %fms en cálculos\nEl tiempo que tarda: %fms en total\n", eulerGPU(a,b,c_t,n,m,p), tiempo_t); //que? no llegaste? por eso el grito jajaja
-
 }
 
 void solve(char p, char n, char m)
@@ -140,7 +138,10 @@ void solve(char p, char n, char m)
     b[j] = (int*)malloc(p*sizeof(int));
 
   // inicializamos las matrices con los valores pedidos
-  inicializar(a, b, n, m, p);
+  inicializar(a, b, c, n, m, p);
+  free(a);
+  free(b);
+  free(c);
 }
 
 int main(int argc, char *argv[])
