@@ -11,8 +11,8 @@ int main(int argc, char** argv)
     IplImage* image;
     IplImage* sharmuta;
 
-    image = cvLoadImage("cancer.jpg", CV_LOAD_IMAGE_GRAYSCALE);
-    sharmuta = cvLoadImage("cancer.jpg", CV_LOAD_IMAGE_COLOR);
+    image = cvLoadImage("hubble/hubble4kby4k.raw", CV_LOAD_IMAGE_GRAYSCALE);
+    sharmuta = cvLoadImage("hubble/huble4kby4k.raw", CV_LOAD_IMAGE_COLOR);
 
     if(!image )
     {
