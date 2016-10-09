@@ -11,8 +11,8 @@ int main(int argc, char** argv)
     IplImage* image;
     IplImage* sharmuta;
 
-    image = cvLoadImage("hubble/hubble4kby4k.raw", CV_LOAD_IMAGE_GRAYSCALE);
-    sharmuta = cvLoadImage("hubble/huble4kby4k.raw", CV_LOAD_IMAGE_COLOR);
+    image = cvLoadImage("cancer.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    sharmuta = cvLoadImage("cancer.jpg", CV_LOAD_IMAGE_COLOR);
 
     if(!image )
     {
@@ -29,13 +29,11 @@ int main(int argc, char** argv)
 
     float *output = (float*)image2->imageData;
     float *input =  (float*)image3->imageData;
-    cout << "pito" << endl;
 
     kernelcall(input, output, image->width,image->height, image3->widthStep);
 
     //Normalize the output values from 0.0 to 1.0
     cvScale(image2,image2,1.0/255.0);
-    cout << "vagina" << endl;
 
     cvShowImage("Original Image", sharmuta );
     cvShowImage("Sobeled Image", image2);
