@@ -1,0 +1,1 @@
+nvcc main.cu  -L/usr/local/include/opncv -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_objdetect

@@ -26,12 +26,8 @@ __global__ void primos(int *n_c, int *raiz_c)
 
   if(index <= raiz_c[0])
   {
-<<<<<<< HEAD
-    for(int j = index; j < max; j+=index)
-=======
     //for(int j = index*index; j < max; j+=index) => esta era la buena
     for(int j = index; j < max; j += index)
->>>>>>> e74919744cee9fb6e2f6c4c5c8b3837e2eeb3fa3
       n_c[j] = 1;
   }
 }
