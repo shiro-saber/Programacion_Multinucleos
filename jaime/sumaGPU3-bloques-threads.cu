@@ -41,6 +41,9 @@ void * sumaGPUS(void* dataI)
    for( int i = 0; i < N; i++ )
       a[i] = b[i] = i+1;
 
+  //a = data->a;
+  //b = data->b;
+
    /*
    cudaEventCreate(&inicio1); // Se inicializan
    cudaEventCreate(&fin1);
@@ -76,6 +79,8 @@ void * sumaGPUS(void* dataI)
    /* copy result back to host */
    /* fix the parameters needed to copy data back to the host */
    cudaMemcpy( c, d_c, size, cudaMemcpyDeviceToHost );
+  // cudaMemcpy( data->returnC, d_c, size, cudaMemcpyDeviceToHost );
+   //data->returnC = c;
 
    cudaFree( d_a );
    cudaFree( d_b );
@@ -87,8 +92,9 @@ void * sumaGPUS(void* dataI)
    cudaEventElapsedTime( &tiempo1, inicio1, fin1 );
    */
 
-   //for (int i=0; i<N; i++)
-  //    printf( "%d + %d = %d\n", a[i], b[i], c[i] );
+
+   for (int i=0; i<N; i++)
+      printf( "%d + %d = %d\n", a[i], b[i], c[i] );
 
    /* clean up */
 
@@ -123,8 +129,8 @@ int * kuz = (int*)malloc( sizeof(int) * N );
 HANDLE_NULL( c );
 // fill in the host memory with data
 for (int i=0; i<N; i++) {
-    a[i] = i;
-    b[i] = i*2;
+    a[i] = i+1;
+    b[i] = i+1;
 }
 
 cudaEventCreate(&inicio1); // Se inicializan
