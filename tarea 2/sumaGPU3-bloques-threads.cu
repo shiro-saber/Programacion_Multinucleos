@@ -50,7 +50,15 @@ int main()
 
    /* launch the kernel on the GPU */
    add<<< N / THREADS_PER_BLOCK, THREADS_PER_BLOCK >>>( d_a, d_b, d_c );
+int main()
+{
+  int videos = 0;
+  cudaGetDeviceCount(&videos);
 
+  printf("%d -> # tarjetas \n", videos);
+
+  return 0;
+}
    cudaEventRecord( fin2, 0); // Se toma el tiempo final.
    cudaEventSynchronize( fin2 ); // Se sincroniza
    cudaEventElapsedTime( &tiempo2, inicio2, fin2 );
@@ -78,4 +86,4 @@ int main()
 
    printf("tiempo calculos en ms: %f\t tiempo de total %f\n", tiempo2,tiempo1);
    return 0;
-} /* end main */
+}
