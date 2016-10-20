@@ -50,15 +50,6 @@ int main()
 
    /* launch the kernel on the GPU */
    add<<< N / THREADS_PER_BLOCK, THREADS_PER_BLOCK >>>( d_a, d_b, d_c );
-int main()
-{
-  int videos = 0;
-  cudaGetDeviceCount(&videos);
-
-  printf("%d -> # tarjetas \n", videos);
-
-  return 0;
-}
    cudaEventRecord( fin2, 0); // Se toma el tiempo final.
    cudaEventSynchronize( fin2 ); // Se sincroniza
    cudaEventElapsedTime( &tiempo2, inicio2, fin2 );
@@ -75,8 +66,8 @@ int main()
    cudaEventSynchronize( fin1 ); // Se sincroniza
    cudaEventElapsedTime( &tiempo1, inicio1, fin1 );
 
-   //for (int i=0; i<N; i++)
-   //   printf( "%d + %d = %d\n", a[i], b[i], c[i] );
+   for (int i=0; i<N; i++)
+      printf( "%d + %d = %d\n", a[i], b[i], c[i] );
 
    /* clean up */
 
