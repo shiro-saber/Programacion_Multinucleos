@@ -82,8 +82,21 @@ struct square
   __host__ __device__ float operator()(const T &x)const{return x*x;}
 };
 
-int main (void){
+struct functor_add
+{
+    int *data;
 
+    functor_add(int * _data):data(_data){}
+
+    template <typename Tuple>
+    __host__ __device__
+    void operator()( Tuple t){
+      thrust::get<3>(t) = thrust::get<0>(t) + thrust::get<1>(t) + data[thrust::get<2>(t)];
+    }
+};
+
+void thrust_reduce()
+{
   float x[4] = {1,2,3,4};
 
   device_vector<float> D_vec(x,x+4);
@@ -94,6 +107,32 @@ int main (void){
   );
 
   cout << norm << endl;
+}
+
+int main (void){
+  const int size =5;
+device_vector<int> A(size);
+device_vector<int> B(size);
+device_vector<int> res(size);
+device_vector<int> ids(size);
+device_vector<int> data(size);
+
+sequence(data.begin(),data.end());
+sequence(A.begin(),A.end(),10,10);
+sequence(B.begin(),B.end(),5,2);
+sequence(ids.begin(),ids.end());
+
+thrust::for_each(
+  thrust::make_zip_iterator(thrust::make_tuple(A.begin(),B.begin(),ids.begin(),res.begin())),
+  thrust::make_zip_iterator(thrust::make_tuple(A.end(),B.end(),ids.end(),res.end())),
+  functor_add(thrust::raw_pointer_cast(data.data()))
+);
+
+host_vector<int> res_h = res;
+for(auto value : res_h){
+  cout << value << endl;
+}
+
   return 0;
 }
 // nvcc thrust.cu -std=c++11 -D_MWAITXINTRIN_H_INCLUDED
