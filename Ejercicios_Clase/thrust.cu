@@ -111,27 +111,27 @@ void thrust_reduce()
 
 int main (void){
   const int size =5;
-device_vector<int> A(size);
-device_vector<int> B(size);
-device_vector<int> res(size);
-device_vector<int> ids(size);
-device_vector<int> data(size);
+  device_vector<int> A(size);
+  device_vector<int> B(size);
+  device_vector<int> res(size);
+  device_vector<int> ids(size);
+  device_vector<int> data(size);
 
-sequence(data.begin(),data.end());
-sequence(A.begin(),A.end(),10,10);
-sequence(B.begin(),B.end(),5,2);
-sequence(ids.begin(),ids.end());
+  sequence(data.begin(),data.end());
+  sequence(A.begin(),A.end(),10,10);
+  sequence(B.begin(),B.end(),5,2);
+  sequence(ids.begin(),ids.end());
 
-thrust::for_each(
-  thrust::make_zip_iterator(thrust::make_tuple(A.begin(),B.begin(),ids.begin(),res.begin())),
-  thrust::make_zip_iterator(thrust::make_tuple(A.end(),B.end(),ids.end(),res.end())),
-  functor_add(thrust::raw_pointer_cast(data.data()))
-);
+  thrust::for_each(
+    thrust::make_zip_iterator(thrust::make_tuple(A.begin(),B.begin(),ids.begin(),res.begin())),
+    thrust::make_zip_iterator(thrust::make_tuple(A.end(),B.end(),ids.end(),res.end())),
+    functor_add(thrust::raw_pointer_cast(data.data()))
+  );
 
-host_vector<int> res_h = res;
-for(auto value : res_h){
-  cout << value << endl;
-}
+  host_vector<int> res_h = res;
+  
+  for(auto value : res_h)
+    cout << value << endl;
 
   return 0;
 }
