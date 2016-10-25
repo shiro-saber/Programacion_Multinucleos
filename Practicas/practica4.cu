@@ -130,7 +130,7 @@ void thrust_matrix_mult(const int row_size, const int col_size)
     else
       ora=false;
 
-  if(!ora) cout << "Iguales" << endl;
+  if(ora) cout << "Iguales" << endl;
   else cout << "NOT equal" << endl;
 }
 
