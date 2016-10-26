@@ -6,10 +6,20 @@
 
 FILE *output; //guardaremos los datos
 
-int main ()
+int main (int argc, char* argv[])
 {
-	int numx=101;  //# de puntos del grid
-	int numt=2000; //# de lapsos de tiempo
+	int numx, numt;
+	if(argc < 3)
+	{
+		numx=500;  //# de puntos del grid
+		numt=2000; //# de lapsos de tiempo
+  }
+	else
+	{
+  	numx = atoi(argv[1]);	 //puntos de la malla
+  	numt = atoi(argv[1]);	//lapsos de tiempo
+  }
+
 	double dx=1/(numx-1);
 	double dt=0.00005;
 	double C[numx][numt];
