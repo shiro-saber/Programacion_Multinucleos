@@ -11,7 +11,7 @@ int main (int argc, char* argv[])
 	int numx, numt;
 	if(argc < 3)
 	{
-		numx=500;  //# de puntos del grid
+		numx=250;  //# de puntos del grid
 		numt=2000; //# de lapsos de tiempo
   }
 	else
