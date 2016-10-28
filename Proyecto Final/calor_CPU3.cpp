@@ -1,11 +1,11 @@
 //https://people.sc.fsu.edu/~jburkardt/cpp_src/heated_plate/heated_plate.html
-# include <cstdlib>
-# include <iostream>
-# include <iomanip>
-# include <fstream>
-# include <cmath>
-# include <ctime>
-# include <string>
+#include <cstdlib>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <cmath>
+#include <ctime>
+#include <string>
 
 using namespace std;
 
@@ -14,52 +14,55 @@ double cpu_time ( );
 
 int main ( int argc, char *argv[] )
 {
+  // Declaracion de variables de tiempo
   double ctime;
   double ctime1;
   double ctime2;
+
+  //variables para la convergencia del algoritmo
   double diff;
   double epsilon  = 0.001;
-  FILE *fp;
-  int N, M;
+  FILE *fp; //apuntador para abrir el archivo
+  int N, M; //grid size
+  bool imprimemela;
+
+  //iteradores que iteran
   int i;
   int iterations;
   int iterations_print;
   int j;
-  double mean;
-  ofstream output;
-  char output_filename[10] = "tvt.dat";
-  int success;
+  double mean; //media del tiempo
+  ofstream output; //archivo donde se va a guardar
+  char output_filename[10] = "tvt.dat"; //nombre del archivo
+  int success; //si se logro o no
 
-//  Read EPSILON from the command line or the user.
-
-  if ( argc < 3 )
+  //definimos el tamaño del grid dependiendo de si hay input o no
+  if (argc < 4)
   {
     M = 500;
     N = 500;
+    imprimemela = false;
   }
   else
   {
     M = atoi(argv[1]);
     N = atoi(argv[2]);
+    imprimemela = (atoi(argv[3]) == 1) ? 1 : 0; //if one liner )({|})(
   }
 
-  double u[M][N];
-  double w[M][N];
+  //declaramos los grid
+  double u[M][N]; //escritura
+  double w[M][N]; //lectura
 
-  cout << "\n";
-  cout << "HEATED_PLATE\n";
-  cout << "\n";
-  cout << "  Spatial grid of " << M << " by " << N << " points.\n";
+  cout << "Punto de calor" << endl;
+  cout << "  Grid de " << M << " * " << N << " nodos"<<endl;
 
-  cout << "\n";
-  cout << "  The iteration will be repeated until the change is <= " << epsilon << "\n";
-  diff = epsilon;
+  cout << "  El estado estable se alcanzara cuando la diferencia sea <= " << epsilon << endl;
+  diff = epsilon; //se define la diferencia
 
-  cout << "\n";
-  cout << "  The steady state solution will be written to "<< output_filename << "\n";
+  cout << "Corriendo :(){ :|: & };:" << endl;
 
-//  Set the boundary values, which don't change.
-
+//  Definimos los boundaries del grid
   for ( i = 1; i < M - 1; i++ )
     w[i][0] = 100.0;
 
@@ -72,8 +75,7 @@ int main ( int argc, char *argv[] )
   for ( j = 0; j < N; j++ )
     w[0][j] = 0.0;
 
-//  Average the boundary values, to come up with a reasonable
-//  initial value for the interior.
+// valor aproximado para los boundaries
   mean = 0.0;
 
   for ( i = 1; i < M - 1; i++ )
@@ -89,35 +91,29 @@ int main ( int argc, char *argv[] )
     mean = mean + w[0][j];
 
   mean = mean / ( double ) ( 2 * M + 2 * N - 4 );
-//
-//  Initialize the interior solution to the mean value.
-//
+
+//  Inicializar grid de escritura
   for ( i = 1; i < M - 1; i++ )
     for ( j = 1; j < N - 1; j++ )
       w[i][j] = mean;
-//
-//  iterate until the  new solution W differs from the old solution U
-//  by no more than EPSILON.
-//
+
+// iteramos hasta que la solucion no sea mayor a epsilon
   iterations = 0;
   iterations_print = 1;
-  cout << "\n";
-  cout << " Iteration  Change\n";
-  cout << "\n";
+  //cout << " Arepa"<<endl;
   ctime1 = cpu_time ( );
 
   while ( epsilon <= diff )
   {
 
-//  Save the old solution in U.
+//  escribimos en el grid de escritura
     for ( i = 0; i < M; i++ )
       for ( j = 0; j < N; j++ )
         u[i][j] = w[i][j];
 
-//  Determine the new estimate of the solution at the interior points.
-//  The new solution W is the average of north, south, east and west neighbors.
-
+    // definimos el nuevo estimado para los puntos interiores, se mueve para todos lados
     diff = 0.0;
+
     for ( i = 1; i < M - 1; i++ )
     {
       for ( j = 1; j < N - 1; j++ )
@@ -130,7 +126,7 @@ int main ( int argc, char *argv[] )
 
     iterations++;
 
-    if ( iterations == iterations_print )
+    if ( iterations == iterations_print && imprimemela)
     {
       cout << "  " << setw(8) << iterations << "  " << diff << "\n";
       iterations_print = 2 * iterations_print;
@@ -140,38 +136,34 @@ int main ( int argc, char *argv[] )
   ctime2 = cpu_time ( );
   ctime = ctime2 - ctime1;
 
-  cout << "\n";
-  cout << "  " << setw(8) << iterations << "  " << diff << "\n";
-  cout << "\n";
-  cout << "  Error tolerance achieved.\n";
-  cout << "  CPU time = " << ctime << "\n";
+  cout << "  " << setw(8) << iterations << "  " << diff << endl;
+  cout << "  Llegamos al epsilon deseado." << endl;
+  cout << "  tiempo de CPU = " << ctime << endl;
 
-//  Write the solution to the output file.
+//  Escribimos los resultados en el archivo
   output.open ( output_filename );
 
-  output << M << "\n";
-  output << N << "\n";
+  output << "Grid: " << M << " * " << N << endl;
 
+  // escritura en output que ira al archivo
   for ( i = 0; i < M; i++ )
   {
     for ( j = 0; j < N; j++)
+    {
       output << "  " << w[i][j];
+    }
     output << "\n";
   }
-  output.close ( );
+  output << "  tiempo de CPU = " << ctime << endl;
+  output.close ( ); //cerramos archivo
 
-  cout << "\n";
-  cout << "  Solution written to the output file \"" << output_filename << "�\"�\n";
+  cout << "  No olvidar revisar el archivo "  << output_filename << endl;
 
-//  Terminate.
-
-  cout << "\n";
-  cout << "HEATED_PLATE:\n";
-  cout << "  Normal end of execution.\n";
-
+  // Terminose.
   return 0;
 }
 
+// funcion para llevar el tiempo
 double cpu_time ( )
 {
   double value;
