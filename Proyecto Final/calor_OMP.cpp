@@ -166,5 +166,5 @@ int main ( int argc, char *argv[] )
   cout << "  No olvidar revisar el archivo "  << output_filename << endl;
 
   // Terminose.
-  return 0;
+  return tf;
 }

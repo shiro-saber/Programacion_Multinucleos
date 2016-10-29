@@ -15,7 +15,7 @@ double cpu_time ( );
 int main ( int argc, char *argv[] )
 {
   // Declaracion de variables de tiempo
-  double ctime;
+  double ctimee;
   double ctime1;
   double ctime2;
 
@@ -134,11 +134,11 @@ int main ( int argc, char *argv[] )
   }
 
   ctime2 = cpu_time ( );
-  ctime = ctime2 - ctime1;
+  ctimee = ctime2 - ctime1;
 
   cout << "  " << setw(8) << iterations << "  " << diff << endl;
   cout << "  Llegamos al epsilon deseado." << endl;
-  cout << "  tiempo de CPU = " << ctime << endl;
+  cout << "  tiempo de CPU = " << ctimee << endl;
 
 //  Escribimos los resultados en el archivo
   output.open ( output_filename );
@@ -154,13 +154,13 @@ int main ( int argc, char *argv[] )
     }
     output << "\n";
   }
-  output << "  tiempo de CPU = " << ctime << endl;
+  output << "  tiempo de CPU = " << ctimee << endl;
   output.close ( ); //cerramos archivo
 
   cout << "  No olvidar revisar el archivo "  << output_filename << endl;
 
   // Terminose.
-  return 0;
+  return ctimee;
 }
 
 // funcion para llevar el tiempo
